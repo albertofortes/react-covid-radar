@@ -22,6 +22,7 @@ h1 a {
 
 .input, .textarea, .react-autocomplete-input {
   background-color: #282f2f;
+  color: #fff;
 }
 
 .react-autocomplete-input > li.active {

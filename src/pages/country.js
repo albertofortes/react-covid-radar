@@ -64,6 +64,7 @@ const Country = (props) => {
 
         dataCharts.push(daily)
         dataChartsDeaths.push(dailyDeaths)
+        return null
       })
 
       setHistoryData (dataCharts.reverse())
@@ -135,7 +136,7 @@ const Country = (props) => {
   useEffect(() => {
     _getData();
     _getHistory();
-  }, [])
+  }, [_getData, _getHistory])
 
   return (
     <React.Fragment>
@@ -149,7 +150,7 @@ const Country = (props) => {
             </div>
             <div className="media-content">
               <p className="title is-4">{stats.country}</p>
-              <p className="subtitle is-6">{stats.population} habs.</p>
+              <p className="subtitle is-6">{_numberWithCommas(parseInt(stats.population))} habs.</p>
             </div>
           </div>
 
@@ -196,23 +197,23 @@ const Country = (props) => {
                 </tr>
                 <tr>
                   <td><strong>Por millón</strong></td>
-                  <td>{cases['1M_pop']}</td>
+                  <td>{_numberWithCommas(parseInt(cases['1M_pop']))}</td>
                 </tr>
                 <tr>
                   <td><strong>Activos</strong></td>
-                  <td>{cases.active}</td>
+                  <td>{_numberWithCommas(parseInt(cases.active))}</td>
                 </tr>
                 <tr>
                   <td><strong>Críticos</strong></td>
-                  <td>{cases.critical}</td>
+                  <td>{_numberWithCommas(parseInt(cases.critical))}</td>
                 </tr>
                 <tr>
                   <td><strong>Recuperados</strong></td>
-                  <td>{cases.recovered}</td>
+                  <td>{_numberWithCommas(parseInt(cases.recovered))}</td>
                 </tr>
                 <tr>
                   <td><strong>Totales</strong></td>
-                  <td>{cases.total}</td>
+                  <td>{_numberWithCommas(parseInt(cases.total))}</td>
                 </tr>
               </tbody>
             </table>
@@ -231,11 +232,11 @@ const Country = (props) => {
                 </tr>
                 <tr>
                   <td><strong>Por millón</strong></td>
-                  <td>{deaths['1M_pop']}</td>
+                  <td>{_numberWithCommas(parseInt(deaths['1M_pop']))}</td>
                 </tr>
                 <tr>
                   <td><strong>Totales</strong></td>
-                  <td>{deaths.total}</td>
+                  <td>{_numberWithCommas(parseInt(deaths.total))}</td>
                 </tr>
               </tbody>
             </table>
@@ -250,11 +251,11 @@ const Country = (props) => {
               <tbody>
                 <tr>
                   <td><strong>Por millón</strong></td>
-                  <td>{tests['1M_pop']}</td>
+                  <td>{_numberWithCommas(parseInt(tests['1M_pop']))}</td>
                 </tr>
                 <tr>
                   <td><strong>Totales</strong></td>
-                  <td>{tests.total}</td>
+                  <td>{_numberWithCommas(parseInt(tests.total))}</td>
                 </tr>
               </tbody>
             </table>
