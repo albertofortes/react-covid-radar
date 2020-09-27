@@ -136,7 +136,7 @@ const Country = (props) => {
   useEffect(() => {
     _getData();
     _getHistory();
-  }, [_getData, _getHistory])
+  })
 
   return (
     <React.Fragment>
