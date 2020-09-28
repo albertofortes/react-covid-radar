@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-//import BitCoinPrice from './presentational';
 import CountryList from './components/countryList';
 import SearchForm from './components/searchForm';
 import Country from './pages/country'
@@ -9,20 +8,9 @@ import './css/bulmaswatch.min.css' // Darky
 import './css/App.css'
 
 function CovidStats () {
-  //state = { bpi: {}}
   const [stats, setStats] = useState({})
   const [storedCountries, setStoredCountries] = useState( [] );
   
-
-  /*componentDidMount () {
-    fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        const { bpi } = data
-        this.setState({ bpi })
-      })
-  }*/
 
   const _getCountries = async () => {
     fetch("https://covid-193.p.rapidapi.com/countries", {

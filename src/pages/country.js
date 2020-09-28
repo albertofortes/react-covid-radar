@@ -155,9 +155,7 @@ const Country = (props) => {
           </div>
 
           <div className="content">
-            Estadísticas actualizadas a fecha y hora:
-            <br />
-            <time dateTime={stats.day}>{stats.day}</time>
+            Up to date stats: <time dateTime={stats.day}>{stats.day}</time>
             <br /><br />
 
             <Bar data={chartData} />
@@ -169,98 +167,105 @@ const Country = (props) => {
         </div>
       </div>
 
-      <div className="card card--small">
-        <div className="card-content">
-          <div className="media">
-            <div className="media-left">
-              <figure className="image is-48x48">
-                <img src={`https://www.countries-ofthe-world.com/flags-normal/flag-of-${stats.country}.png`} alt="Flag" />
-              </figure>
+      <div class="columns">
+        <div class="column">
+          <div className="card card--small">
+            <div className="card-content">
+              <div className="content">
+                <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                  <thead>
+                    <tr>
+                      <th colSpan="2">Cases</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>New 24h</strong></td>
+                      <td>{cases.new}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>pop/1 Million</strong></td>
+                      <td>{_numberWithCommas(parseInt(cases['1M_pop']))}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Active</strong></td>
+                      <td>{_numberWithCommas(parseInt(cases.active))}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Critical</strong></td>
+                      <td>{_numberWithCommas(parseInt(cases.critical))}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Recovered</strong></td>
+                      <td>{_numberWithCommas(parseInt(cases.recovered))}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Total</strong></td>
+                      <td>{_numberWithCommas(parseInt(cases.total))}</td>
+                    </tr>
+                  </tbody>
+                </table>                              
+              </div>
             </div>
-            <div className="media-content">
-              <p className="title is-4">{stats.country}</p>
-              <p className="subtitle is-6">{stats.population} habs.</p>
-            </div>
-          </div>
+          </div>      
 
-          <div className="content">
-            <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-              <thead>
-                <tr>
-                  <th colSpan="2">Casos</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Nuevas 24h</strong></td>
-                  <td>{cases.new}</td>
-                </tr>
-                <tr>
-                  <td><strong>Por millón</strong></td>
-                  <td>{_numberWithCommas(parseInt(cases['1M_pop']))}</td>
-                </tr>
-                <tr>
-                  <td><strong>Activos</strong></td>
-                  <td>{_numberWithCommas(parseInt(cases.active))}</td>
-                </tr>
-                <tr>
-                  <td><strong>Críticos</strong></td>
-                  <td>{_numberWithCommas(parseInt(cases.critical))}</td>
-                </tr>
-                <tr>
-                  <td><strong>Recuperados</strong></td>
-                  <td>{_numberWithCommas(parseInt(cases.recovered))}</td>
-                </tr>
-                <tr>
-                  <td><strong>Totales</strong></td>
-                  <td>{_numberWithCommas(parseInt(cases.total))}</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <br />
-            <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-              <thead>
-                <tr>
-                  <th colSpan="2">Muertes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Nuevas 24h</strong></td>
-                  <td>{deaths.new}</td>
-                </tr>
-                <tr>
-                  <td><strong>Por millón</strong></td>
-                  <td>{_numberWithCommas(parseInt(deaths['1M_pop']))}</td>
-                </tr>
-                <tr>
-                  <td><strong>Totales</strong></td>
-                  <td>{_numberWithCommas(parseInt(deaths.total))}</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <br />
-            <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-              <thead>
-                <tr>
-                  <th colSpan="2">Tests</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Por millón</strong></td>
-                  <td>{_numberWithCommas(parseInt(tests['1M_pop']))}</td>
-                </tr>
-                <tr>
-                  <td><strong>Totales</strong></td>
-                  <td>{_numberWithCommas(parseInt(tests.total))}</td>
-                </tr>
-              </tbody>
-            </table>
+        </div>
+        <div class="column">
+          <div className="card card--small">
+            <div className="card-content">
+              <div className="content">
+                <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                  <thead>
+                    <tr>
+                      <th colSpan="2">Deaths</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>New 24h</strong></td>
+                      <td>{deaths.new}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Pop/1M</strong></td>
+                      <td>{_numberWithCommas(parseInt(deaths['1M_pop']))}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Total</strong></td>
+                      <td>{_numberWithCommas(parseInt(deaths.total))}</td>
+                    </tr>
+                  </tbody>
+                </table>  
+              </div>
+            </div>      
           </div>
         </div>
+
+        <div class="column">
+          <div className="card card--small">
+            <div className="card-content">
+              <div className="content">
+              <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                  <thead>
+                    <tr>
+                      <th colSpan="2">Tests</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>pop/1M</strong></td>
+                      <td>{_numberWithCommas(parseInt(tests['1M_pop']))}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Total</strong></td>
+                      <td>{_numberWithCommas(parseInt(tests.total))}</td>
+                    </tr>
+                  </tbody>
+                </table>              
+              </div>
+            </div>      
+          </div>
+        </div>
+        
       </div>
     </React.Fragment>
   )
