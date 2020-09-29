@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import CountryList from './components/countryList';
 import SearchForm from './components/searchForm';
 import Country from './pages/country'
-
+import { APIKey } from './APIKey';
 import './css/bulmaswatch.min.css' // Darky
 import './css/App.css'
 
@@ -17,7 +17,7 @@ function CovidStats () {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "covid-193.p.rapidapi.com",
-        "x-rapidapi-key": "367b7757damshe03e78a8f6294cbp1f52fcjsnab58c2b5a569"
+        "x-rapidapi-key": APIKey
       }
     })
     .then(response => response.json())
@@ -35,7 +35,7 @@ function CovidStats () {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "covid-193.p.rapidapi.com",
-        "x-rapidapi-key": "367b7757damshe03e78a8f6294cbp1f52fcjsnab58c2b5a569"
+        "x-rapidapi-key": APIKey
       }
     })
     .then(response => response.json())

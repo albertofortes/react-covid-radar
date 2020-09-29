@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Bar, Line} from 'react-chartjs-2';
+import { APIKey } from '../APIKey';
 
 const Country = (props) => {
   const [stats, setStats] = useState({})
@@ -16,12 +17,12 @@ const Country = (props) => {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "covid-193.p.rapidapi.com",
-        "x-rapidapi-key": "367b7757damshe03e78a8f6294cbp1f52fcjsnab58c2b5a569"
+        "x-rapidapi-key": APIKey
       }
     })
     .then(response => response.json())
     .then(res => {
-      console.log(res)
+      //console.log(res)
       const stats = res.response[0]
       setStats( stats )
       setCases( stats.cases )
@@ -38,12 +39,12 @@ const Country = (props) => {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "covid-193.p.rapidapi.com",
-        "x-rapidapi-key": "367b7757damshe03e78a8f6294cbp1f52fcjsnab58c2b5a569"
+        "x-rapidapi-key": APIKey
       }
     })
     .then(response => response.json())
     .then(res => {
-      console.log(res)
+      //console.log(res)
       const history = res.response
       const labelsChart = []
       const dataCharts = []
@@ -133,10 +134,16 @@ const Country = (props) => {
     ]
   };
   
+  /**
+   * Functions passed to useEffect are executed on every component rendering—unless you pass a second argument to it.
+     If the second argument is an empty array, like the example above, it will behave exactly like the componentDidMount, only executing on the first rendering.
+     Alternatively, you can pass one or more values inside the array, which will make useEffect execute every time those value changes.
+   */
   useEffect(() => {
     _getData();
     _getHistory();
-  })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <React.Fragment>
@@ -167,8 +174,8 @@ const Country = (props) => {
         </div>
       </div>
 
-      <div class="columns">
-        <div class="column">
+      <div className="columns">
+        <div className="column">
           <div className="card card--small">
             <div className="card-content">
               <div className="content">
@@ -210,7 +217,7 @@ const Country = (props) => {
           </div>      
 
         </div>
-        <div class="column">
+        <div className="column">
           <div className="card card--small">
             <div className="card-content">
               <div className="content">
@@ -240,7 +247,7 @@ const Country = (props) => {
           </div>
         </div>
 
-        <div class="column">
+        <div className="column">
           <div className="card card--small">
             <div className="card-content">
               <div className="content">

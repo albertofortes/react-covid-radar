@@ -30,7 +30,8 @@ const CountryList = ( props ) => {
   return (
     <React.Fragment>
       <div>
-        <h4>Covid cases by country</h4>
+        <h4>Covid cases by country <small>(Updated every 15 minutes).</small></h4>
+        <br />
         <table className="table is-striped is-fullwidth">
           <thead>
             <tr>

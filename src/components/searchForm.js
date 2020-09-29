@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import TextInput from 'react-autocomplete-input';
 import 'react-autocomplete-input/dist/bundle.css';
 import { withRouter } from 'react-router-dom';
+import { APIKey } from '../APIKey';
 
 const SearchForm = (props) => {
   const [inputCountry, setInputCountry] = useState('Spain');
@@ -18,7 +19,7 @@ const SearchForm = (props) => {
       "method": "get",
       "headers": {
         "x-rapidapi-host": "covid-193.p.rapidapi.com",
-        "x-rapidapi-key": "367b7757damshe03e78a8f6294cbp1f52fcjsnab58c2b5a569"
+        "x-rapidapi-key": APIKey
       }
     })
     .then(response => response.json())
