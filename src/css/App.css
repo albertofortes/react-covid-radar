@@ -14,6 +14,7 @@ h1 a {
 .card {
   background-color: transparent;
   margin: 0 auto 2.5rem;
+  max-width: 98%;
 }
 
 .card--small {
@@ -39,4 +40,18 @@ h1 a {
 
 .table td.deaths {
   color: tomato;
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  color: silver;
+  min-height: 5rem;
+  box-sizing: border-box;
+  border-top: 2px solid #343c3d;
+}
+
+.footer a {
+  text-decoration: underline;
+  color: silver;
 }

@@ -8,9 +8,11 @@ const SearchForm = (props) => {
   const [inputCountry, setInputCountry] = useState('Spain');
   
   const _handleSubmit = e => {
-    e.preventDefault()
-    props.history.push('/');
-
+    //e.preventDefault()
+    //props.history.push('/');
+    props.history.push(`/${inputCountry}`);
+    
+    /*
     const URL = inputCountry.length === 0 
       ? "https://covid-193.p.rapidapi.com/statistics"
       : `https://covid-193.p.rapidapi.com/statistics?country=${inputCountry}`
@@ -29,7 +31,7 @@ const SearchForm = (props) => {
     })
     .catch(err => {
       console.log(err);
-    })
+    })*/
   }
 
   const _handleTriggerChange = e => {

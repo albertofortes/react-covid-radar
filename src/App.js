@@ -86,7 +86,11 @@ function CovidStats () {
         />
         <Route exact path="/:id" component={Country} />
 
-      </div> 
+      </div>
+
+      <footer className="footer" >
+        <p>{new Date().getFullYear()}, <a href="https://www.albertofortes.com" title="Senior Front-end Javascript developer freelance or contractor">Alberto Fortes</a>. An experiment with React Hooks.</p>
+      </footer>
     </Router>   
   )
 }

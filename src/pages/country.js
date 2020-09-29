@@ -9,7 +9,10 @@ const Country = (props) => {
   const [tests, setTests] = useState({})
   const [historyData, setHistoryData] = useState([])
   const [historyDeaths, setHistoryDeaths] = useState([])
+  const [historyCriticals, setHistoryCriticals] = useState([])
   const [historyDataTotalCases, setHistoryDataTotalCases] = useState([])
+  const [historyDataTotalRecovered, setHistoryDataTotalRecovered] = useState([])
+  const [historyDataTotalDeaths, setHistoryDataTotalDeaths] = useState([])
   const [historyDataLabels, setHistoryDataLabels] = useState([])
 
   const _getData = async () => {
@@ -49,29 +52,33 @@ const Country = (props) => {
       const labelsChart = []
       const dataCharts = []
       const dataChartsDeaths = []
+      const dataChartsCriticals = []
       const dataTotalCharts = []
-
-      Object.keys(history).map( key => (
-        labelsChart.push(history[key].day)
-      ))
-
-      Object.keys(history).map( key => (
-        dataTotalCharts.push(history[key].cases.total)
-      ))
+      const dataTotalDeathsCharts = []
+      const dataTotalRecoveredCharts = []
 
       Object.keys(history).map(function(key) {
         let daily = isNaN(parseInt(history[key].cases.new)) ? 0 : parseInt (history[key].cases.new)
         let dailyDeaths = isNaN(parseInt(history[key].deaths.new)) ? 0 : parseInt (history[key].deaths.new)
+        let dailyCriticals = isNaN(parseInt(history[key].cases.critical)) ? 0 : parseInt (history[key].cases.critical)
 
+        labelsChart.push(history[key].day)
+        dataTotalCharts.push(history[key].cases.total)
+        dataTotalRecoveredCharts.push(history[key].cases.recovered)
+        dataTotalDeathsCharts.push(history[key].deaths.total)
         dataCharts.push(daily)
         dataChartsDeaths.push(dailyDeaths)
+        dataChartsCriticals.push(dailyCriticals)
         return null
       })
 
       setHistoryData (dataCharts.reverse())
       setHistoryDeaths (dataChartsDeaths.reverse())
+      setHistoryCriticals (dataChartsCriticals.reverse())
       setHistoryDataLabels (labelsChart.reverse())
       setHistoryDataTotalCases (dataTotalCharts.reverse())
+      setHistoryDataTotalRecovered (dataTotalRecoveredCharts.reverse())
+      setHistoryDataTotalDeaths (dataTotalDeathsCharts.reverse())
     })
     .catch(err => {
       console.log(err);
@@ -88,11 +95,11 @@ const Country = (props) => {
     datasets: [
       {
         label: 'Daily new cases',
-        backgroundColor: 'rgba(255,0,0,0.2)',
-        borderColor: 'rgba(220,20,60,1)',
+        backgroundColor: 'rgba(75,192,192,0.2)',
+        borderColor: 'rgba(75,192,192,1)',
         borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,0,0,0.4)',
-        hoverBorderColor: 'rgba(220,20,60,1)',
+        hoverBackgroundColor: 'rgba(75,192,192,0.4)',
+        hoverBorderColor: 'rgba(75,192,192,1)',
         data: historyData
       },
       {
@@ -103,6 +110,15 @@ const Country = (props) => {
         hoverBackgroundColor: 'rgba(255,223,0,0.4)',
         hoverBorderColor: 'rgba(255,223,0,1)',
         data: historyDeaths
+      },
+      {
+        label: 'Daily critical cases',
+        backgroundColor: 'rgba(255,0,0,0.2)',
+        borderColor: 'rgba(255,0,0,1)',
+        borderWidth: 1,
+        hoverBackgroundColor: 'rgba(255,0,0,0.4)',
+        hoverBorderColor: 'rgba(255,0,0,1)',
+        data: historyCriticals
       }
     ]
   }
@@ -125,11 +141,53 @@ const Country = (props) => {
         pointBorderWidth: 1,
         pointHoverRadius: 5,
         pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
+        pointHoverBorderColor: 'rgba(75,192,192,1)',
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
         data: historyDataTotalCases
+      },
+      {
+        label: 'Recovered',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgba(57,255,20,0.4)',
+        borderColor: 'rgba(57,255,20,1)',
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgba(57,255,20,1)',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: 'rgba(57,255,20,1)',
+        pointHoverBorderColor: 'rgba(57,255,20,1)',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: historyDataTotalRecovered
+      },
+      {
+        label: 'Total deaths',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgba(255,223,0,0.4)',
+        borderColor: 'rgba(255,223,0,1)',
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgba(255,223,0,1)',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: 'rgba(255,223,0,1)',
+        pointHoverBorderColor: 'rgba(255,223,1)',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: historyDataTotalDeaths
       }
     ]
   };
