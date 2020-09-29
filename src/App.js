@@ -59,7 +59,7 @@ function CovidStats () {
 
   return (
     <Router>
-      <div className="container">
+      <div className="container container--main">
         <div className="level">
           <div className="level-left">
             <div className="level-item">
