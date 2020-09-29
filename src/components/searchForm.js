@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import TextInput from 'react-autocomplete-input';
 import 'react-autocomplete-input/dist/bundle.css';
 import { withRouter } from 'react-router-dom';
-import { APIKey } from '../APIKey';
+//import { APIKey } from '../APIKey';
 
 const SearchForm = (props) => {
   const [inputCountry, setInputCountry] = useState('Spain');
