@@ -1,3 +1,16 @@
+# COVID-19 STATS. A React + API learning project.
+
+* API: https://rapidapi.com/api-sports/api/covid-193 Updated every 15 minutes
+* React Hooks
+* React Autocomplete Input
+* React Amazing table sorter: https://www.npmjs.com/package/react-amazing-table-sorter
+* React SASS
+* React Charts 2: https://github.com/jerairrest/react-chartjs-2
+* Bulma CSS
+
+
+***
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

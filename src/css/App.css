@@ -59,3 +59,23 @@ h1 a {
   text-decoration: underline;
   color: silver;
 }
+
+.react-amazing-table-sorter th.-can-sort span {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.react-amazing-table-sorter th.-can-sort span:after {
+  right: 0;
+}
+.react-amazing-table-sorter th.-can-sort span.-sort-up:after {
+  border-width: 0 .5rem .5rem .5rem;
+  border-color: transparent transparent #fff transparent;
+}
+
+.react-amazing-table-sorter th.-can-sort span.-sort-down:after {
+  border-width: .5rem .5rem 0 .5rem;
+  border-color: #fff transparent transparent transparent;
+
+}
